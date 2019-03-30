@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.netty.protobuf.five;
+
+//protoc --java_out=src/main/java src/protobuf/Student.proto
+option optimize_for = SPEED;
+option java_package = "com.netty.protobuf.five";
+option java_outer_classname = "DataInfo"; //外部类
+
+message Student{
+    required string name = 1;
+    optional int32  age = 2;
+    optional string address = 3;
+}

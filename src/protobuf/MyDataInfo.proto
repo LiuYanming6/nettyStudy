@@ -1,0 +1,42 @@
+syntax = "proto2";
+
+package com.netty.protobuf;
+
+//protoc --java_out=src/main/java src/protobuf/MyDataInfo.proto
+option optimize_for = SPEED;
+option java_package = "com.netty.protobuf.six";
+option java_outer_classname = "MyDataInfo"; //外部类
+
+// 传递多种类型
+message MyMessage {
+    enum DataType {
+        PersonType = 1;
+        DogType = 2;
+        CatType = 3;
+    }
+
+    //为保证语言无关性, 字段采用下划线, 转换成java后会变成驼峰
+    required DataType data_type = 1;
+    oneof dataBody {    //节省空间
+        Person person = 2;
+        Dog    dog    = 3;
+        Cat    cat    = 4;
+    }
+}
+
+
+message Person{
+    required string name = 1;
+    optional int32  age = 2;
+    optional string address = 3;
+}
+
+message Dog {
+    optional string name = 1;
+    optional int32 age = 2;
+}
+
+message Cat {
+    optional string name = 1;
+    optional string city = 2;
+}
