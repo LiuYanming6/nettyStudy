@@ -21,7 +21,8 @@ public class ThriftServer {
 
         try {
             socket = new TNonblockingServerSocket(8899);
-            arg = new THsHaServer.Args(socket).minWorkerThreads(2).maxWorkerThreads(4);
+//            arg = new THsHaServer.Args(socket).minWorkerThreads(2).maxWorkerThreads(4); //高版本推荐
+            arg = new THsHaServer.Args(socket).workerThreads(4);
             processor = new PersonService.Processor<>(new PersonServiceImg());
 
             /* 数据传输格式

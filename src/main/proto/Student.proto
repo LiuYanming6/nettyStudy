@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package com.netty.proto;
+
+option java_package = "com.netty.proto";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService {
+//    rpc GetRealnameByUsername1(stream MyRequest) returns  (MyResponse){};
+    rpc GetRealnameByUsername(MyRequest) returns (MyResponse){};
+}
+
+message MyRequest{
+    string username = 1;
+}
+
+message MyResponse {
+    string realname = 2;
+}
+
+/*
+./gradlew clean
+./gradlew generateProto
+
+com.netty.grpc生成代码拖拽到相应目录不太好,采用把生成的中间代码放到git subtree目录拉到当前项目比较优雅
+*/
