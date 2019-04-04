@@ -7,16 +7,54 @@ option java_outer_classname = "StudentProto";
 option java_multiple_files = true;
 
 service StudentService {
-//    rpc GetRealnameByUsername1(stream MyRequest) returns  (MyResponse){};
-    rpc GetRealnameByUsername(MyRequest) returns (MyResponse){};
+    //    rpc GetRealnameByUsername1(stream MyRequest) returns  (MyResponse){};
+    rpc GetRealnameByUsername (MyRequest) returns (MyResponse) {
+    };
+
+    // client send a object and server return a stream
+    rpc GetStudentsByAge (StudentRequest) returns (stream StudentResponse) {
+    };
+
+    // client send a stream and server return a object
+    rpc GetStudentsWrapperByAges (stream StudentRequest) returns (StudentResponseList) {
+    };
+
+    // bidirectional stream
+    rpc BiTalk (stream StreamRequest) returns (stream StreamResponse) {
+    };
 }
 
-message MyRequest{
+message MyRequest {
     string username = 1;
 }
 
 message MyResponse {
     string realname = 2;
+}
+
+
+message StudentRequest {
+    int32 age = 1;
+}
+
+message StudentResponse {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+
+message StudentResponseList {
+    repeated StudentResponse studentResponse = 1;
+}
+
+
+message StreamRequest {
+    string request_info = 1;
+}
+
+message StreamResponse {
+    string response_info = 1;
 }
 
 /*
