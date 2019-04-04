@@ -42,9 +42,13 @@ protobuf {
             artifact = 'io.grpc:protoc-gen-grpc-java:1.19.0'
         }
     }
+    generateProtoTasks.generatedFilesBaseDir = 'src' //default 'build/gen..'
     generateProtoTasks {
         all()*.plugins {
-            grpc {}
+            grpc {
+                outputSubDir = 'java' //default 'grpc'
+                // or setOutputSubDir 'java' //调用函数,在源码中可以找到
+            }
         }
     }
 }

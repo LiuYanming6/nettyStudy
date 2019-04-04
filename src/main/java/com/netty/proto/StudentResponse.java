@@ -759,11 +759,11 @@ public final class StudentResponse extends
         public final Builder mergeUnknownFields(
                 final com.google.protobuf.UnknownFieldSet unknownFields) {
             return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:com.netty.proto.StudentResponse)
     }
+
+
+    // @@protoc_insertion_point(builder_scope:com.netty.proto.StudentResponse)
+  }
 
 }
 

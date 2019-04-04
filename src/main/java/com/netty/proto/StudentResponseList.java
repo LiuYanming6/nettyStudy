@@ -801,12 +801,12 @@ public final class StudentResponseList extends
         @java.lang.Override
         public final Builder mergeUnknownFields(
                 final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:com.netty.proto.StudentResponseList)
+      return super.mergeUnknownFields(unknownFields);
     }
+
+
+    // @@protoc_insertion_point(builder_scope:com.netty.proto.StudentResponseList)
+  }
 
 }
 

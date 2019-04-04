@@ -56,10 +56,3 @@ message StreamRequest {
 message StreamResponse {
     string response_info = 1;
 }
-
-/*
-./gradlew clean
-./gradlew generateProto
-
-com.netty.grpc生成代码拖拽到相应目录不太好,采用把生成的中间代码放到git subtree目录拉到当前项目比较优雅
-*/

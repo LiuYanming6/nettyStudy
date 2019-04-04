@@ -571,7 +571,7 @@ public final class StreamRequest extends
 
 
         // @@protoc_insertion_point(builder_scope:com.netty.proto.StreamRequest)
-    }
+  }
 
 }
 

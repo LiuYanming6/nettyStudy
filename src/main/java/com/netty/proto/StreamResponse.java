@@ -571,7 +571,7 @@ public final class StreamResponse extends
 
 
         // @@protoc_insertion_point(builder_scope:com.netty.proto.StreamResponse)
-    }
+  }
 
 }
 

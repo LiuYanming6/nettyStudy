@@ -56,6 +56,7 @@ public final class StudentServiceGrpc {
      return getGetRealnameByUsernameMethod;
   }
 
+  private static final int METHODID_GET_REALNAME_BY_USERNAME = 0;
   private static final int METHODID_GET_STUDENTS_BY_AGE = 1;
   private static final int METHODID_GET_STUDENTS_WRAPPER_BY_AGES = 2;
   private static final int METHODID_BI_TALK = 3;
@@ -65,29 +66,7 @@ public final class StudentServiceGrpc {
           com.netty.proto.StudentResponseList> getGetStudentsWrapperByAgesMethod;
   private static volatile io.grpc.MethodDescriptor<com.netty.proto.StreamRequest,
           com.netty.proto.StreamResponse> getBiTalkMethod;
-
-  /**
-   * Creates a new async stub that supports all call types for the service
-   */
-  public static StudentServiceStub newStub(io.grpc.Channel channel) {
-    return new StudentServiceStub(channel);
-  }
-
-  /**
-   * Creates a new blocking-style stub that supports unary and streaming output calls on the service
-   */
-  public static StudentServiceBlockingStub newBlockingStub(
-      io.grpc.Channel channel) {
-    return new StudentServiceBlockingStub(channel);
-  }
-
-  /**
-   * Creates a new ListenableFuture-style stub that supports unary calls on the service
-   */
-  public static StudentServiceFutureStub newFutureStub(
-      io.grpc.Channel channel) {
-    return new StudentServiceFutureStub(channel);
-  }
+  private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "GetStudentsByAge",
@@ -177,37 +156,27 @@ public final class StudentServiceGrpc {
   }
 
   /**
-   *
+   * Creates a new async stub that supports all call types for the service
    */
-  public static final class StudentServiceFutureStub extends io.grpc.stub.AbstractStub<StudentServiceFutureStub> {
-    private StudentServiceFutureStub(io.grpc.Channel channel) {
-      super(channel);
-    }
-
-    private StudentServiceFutureStub(io.grpc.Channel channel,
-                                     io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected StudentServiceFutureStub build(io.grpc.Channel channel,
-                                             io.grpc.CallOptions callOptions) {
-      return new StudentServiceFutureStub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     *    rpc GetRealnameByUsername1(stream MyRequest) returns  (MyResponse){};
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.netty.proto.MyResponse> getRealnameByUsername(
-            com.netty.proto.MyRequest request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetRealnameByUsernameMethod(), getCallOptions()), request);
-    }
+  public static StudentServiceStub newStub(io.grpc.Channel channel) {
+    return new StudentServiceStub(channel);
   }
 
-  private static final int METHODID_GET_REALNAME_BY_USERNAME = 0;
+  /**
+   * Creates a new blocking-style stub that supports unary and streaming output calls on the service
+   */
+  public static StudentServiceBlockingStub newBlockingStub(
+          io.grpc.Channel channel) {
+    return new StudentServiceBlockingStub(channel);
+  }
+
+  /**
+   * Creates a new ListenableFuture-style stub that supports unary calls on the service
+   */
+  public static StudentServiceFutureStub newFutureStub(
+          io.grpc.Channel channel) {
+    return new StudentServiceFutureStub(channel);
+  }
 
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
@@ -409,50 +378,42 @@ public final class StudentServiceGrpc {
     }
   }
 
-  private static abstract class StudentServiceBaseDescriptorSupplier
-          implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    StudentServiceBaseDescriptorSupplier() {
+  /**
+   *
+   */
+  public static final class StudentServiceFutureStub extends io.grpc.stub.AbstractStub<StudentServiceFutureStub> {
+    private StudentServiceFutureStub(io.grpc.Channel channel) {
+      super(channel);
+    }
+
+    private StudentServiceFutureStub(io.grpc.Channel channel,
+                                     io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.netty.proto.StudentProto.getDescriptor();
+    protected StudentServiceFutureStub build(io.grpc.Channel channel,
+                                             io.grpc.CallOptions callOptions) {
+      return new StudentServiceFutureStub(channel, callOptions);
     }
 
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("StudentService");
-    }
-  }
-
-  private static final class StudentServiceFileDescriptorSupplier
-          extends StudentServiceBaseDescriptorSupplier {
-    StudentServiceFileDescriptorSupplier() {
-    }
-  }
-
-  private static final class StudentServiceMethodDescriptorSupplier
-          extends StudentServiceBaseDescriptorSupplier
-          implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
-
-    StudentServiceMethodDescriptorSupplier(String methodName) {
-      this.methodName = methodName;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
-      return getServiceDescriptor().findMethodByName(methodName);
+    /**
+     * <pre>
+     *    rpc GetRealnameByUsername1(stream MyRequest) returns  (MyResponse){};
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.netty.proto.MyResponse> getRealnameByUsername(
+            com.netty.proto.MyRequest request) {
+      return futureUnaryCall(
+              getChannel().newCall(getGetRealnameByUsernameMethod(), getCallOptions()), request);
     }
   }
-
-  private static volatile io.grpc.ServiceDescriptor serviceDescriptor;
 
   private static final class MethodHandlers<Req, Resp> implements
-      io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
+          io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
+          io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
+          io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
+          io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
     private final StudentServiceImplBase serviceImpl;
     private final int methodId;
 
@@ -492,6 +453,43 @@ public final class StudentServiceGrpc {
         default:
           throw new AssertionError();
       }
+    }
+  }
+
+  private static abstract class StudentServiceBaseDescriptorSupplier
+          implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+    StudentServiceBaseDescriptorSupplier() {
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
+      return com.netty.proto.StudentProto.getDescriptor();
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
+      return getFileDescriptor().findServiceByName("StudentService");
+    }
+  }
+
+  private static final class StudentServiceFileDescriptorSupplier
+          extends StudentServiceBaseDescriptorSupplier {
+    StudentServiceFileDescriptorSupplier() {
+    }
+  }
+
+  private static final class StudentServiceMethodDescriptorSupplier
+          extends StudentServiceBaseDescriptorSupplier
+          implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
+    private final String methodName;
+
+    StudentServiceMethodDescriptorSupplier(String methodName) {
+      this.methodName = methodName;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
+      return getServiceDescriptor().findMethodByName(methodName);
     }
   }
 }
